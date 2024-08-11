@@ -96,9 +96,16 @@
             <input type="text" id="name" name="name" required>
             <label for="phone">Celular:</label>
             <input type="tel" id="phone" name="phone" required>
-            <label for="classroom">Número de Salón o Ubicación:</label>
+            <label for="classroom">Número de Salón:</label>
             <input type="text" id="classroom" name="classroom" required>
-            <button type="submit">Confirmar</button>
+            <h3>Método de Pago</h3>
+            <button type="button" class="payment-method" data-method="Bancolombia a la Mano">Bancolombia a la Mano</button>
+            <button type="button" class="payment-method" data-method="Dale">Dale</button>
+            <button type="button" class="payment-method" data-method="Daviplata">Daviplata</button>
+            <button type="button" class="payment-method" data-method="Nequi">Nequi</button>
+            <button type="button" class="payment-method" data-method="Efectivo">Efectivo</button>
+            <input type="hidden" id="payment-method" name="payment-method" required>
+            <button type="button" id="confirm-button">Confirmar</button>
         </form>
     </div>
     <footer>
