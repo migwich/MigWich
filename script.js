@@ -6,6 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const checkoutSection = document.getElementById('checkout-section');
     const checkoutForm = document.getElementById('checkout-form');
 
+    const paymentButtons = document.querySelectorAll('.payment-method');
+    const paymentMethodInput = document.getElementById('payment-method');
+    const confirmButton = document.getElementById('confirm-button');
+
     document.querySelectorAll('.add-to-cart').forEach(button => {
         button.addEventListener('click', () => {
             const sabor = button.closest('.sandwich').getAttribute('data-sabor');
@@ -75,4 +79,32 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    paymentButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            paymentMethodInput.value = button.getAttribute('data-method');
+            alert(`Método de pago seleccionado: ${paymentMethodInput.value}`);
+        });
+    });
+    
+    confirmButton.addEventListener('click', () => {
+        const name = document.getElementById('name').value;
+        const phone = document.getElementById('phone').value;
+        const classroom = document.getElementById('classroom').value;
+        const paymentMethod = paymentMethodInput.value;
+    
+        if (name && phone && classroom && paymentMethod) {
+            const message = `Nuevo pedido:\n\nNombre: ${name}\nCelular: ${phone}\nSalón: ${classroom}\nMétodo de Pago: ${paymentMethod}`;
+            const whatsappLink = `https://wa.me/573103513674?text=${encodeURIComponent(message)}`;
+    
+            window.location.href = whatsappLink;
+        } else {
+            alert('Por favor, complete todos los campos antes de confirmar.');
+        }
+    });
+    
+    checkoutButton.addEventListener('click', () => {
+        checkoutSection.classList.remove('hidden');
+        document.querySelector('.container').classList.add('hidden');
+    });
 });
